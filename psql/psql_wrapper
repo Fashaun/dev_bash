@@ -1,0 +1,5 @@
+#!/bin/bash
+
+psql_cmd="$1"
+[ -z "$psql_cmd" ] && echo "no input command" && exit
+sudo -u postgres psql -X -A --no-align -t -F ';' --quiet -d postgresql://postgres:admin1234@localhost/vpncloud -c "$psql_cmd"
